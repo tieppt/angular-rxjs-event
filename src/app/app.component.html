@@ -1,0 +1,28 @@
+<h1 *ngIf="!isNotFound">
+  {{title}}
+</h1>
+<div>
+  <button (click)="changeComponent()">Change Component type</button>
+  <ng-container tpDynamicComp [type]="dynamicComType">
+  </ng-container>
+
+  <ng-container *ngComponentOutlet="dynamicComp"></ng-container>
+</div>
+
+<div *ngIf="list$ | async as list; else loading">
+  <div *ngFor="let item of list; index as idx">
+    value = {{ item }} | index = {{ idx }}
+  </div>
+</div>
+<ng-template #loading>
+  <img src="/assets/loading.svg" alt="Loading">
+</ng-template>
+
+<div>
+  <a [routerLink]="['/']">Home</a>
+  <a [routerLink]="['exam']">Exam</a>
+  <a [routerLink]="['exam', 'detail']">Exam detail</a>
+  <a [routerLink]="['product']">Product</a>
+  <a [routerLink]="['product', 100]">Product id = 100</a>
+</div>
+<router-outlet></router-outlet>
