@@ -12,8 +12,8 @@ export default class RxEvent {
   private subjects: { [key: string]: Subject<any> } = {};
 
   /**
-   * Immediate value or emit with the last value
-   * @type {boolean}
+   * Constructor
+   * @param immediate {boolean} Immediate value or emit with the last value
    */
   constructor(private immediate = true) { }
 
